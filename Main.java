@@ -305,6 +305,8 @@ class LinkedList extends List
 
         mergedList.headNode = cloneOfFirstList.headNode;
         mergedList.tailNode = cloneOfFirstList.tailNode;
+        mergedList.tailNode.next = cloneOfSecondList.headNode;
+        
         cloneOfSecondList.headNode.prev = mergedList.tailNode; // Update the previous reference of the second list's head
         mergedList.tailNode = cloneOfSecondList.tailNode;
         mergedList.totalNodes = firstList.totalNodes + secondList.totalNodes;
@@ -334,9 +336,9 @@ class Node
     }
 }
 
-public class Main 
+public class Main
 {
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         LinkedList myList = new LinkedList();
         LinkedList myList2 = new LinkedList();
@@ -348,8 +350,22 @@ public class Main
         myList.addToEnd(25);
         myList.addToEnd(30);
 
+
         myList2.add(40);
         myList2.add(50);
-        myList
+        myList2.add(60);
+        myList2.add(70);
+        myList2.add(80);
+        myList2.add(90);
+
+
+        myList.print();
+        myList2.print();
+
+        LinkedList merged = LinkedList.mergeList(myList, myList2);
+        merged.print();
+
+        merged.reverseList();
+        merged.print();
     }
 }
