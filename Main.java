@@ -118,15 +118,20 @@ class LinkedList extends List
         int indexCounter = 1;
         Node nodeToDelete = headNode;
 
-        if (indexToDelete == 1) 
+        if(indexToDelete <= 0 )
         {
-            nodeToDelete = this.deleteAtStart();
+            System.out.println("Cannot delete at 0 or -ve index. List index start at 1  :( ");
+            return null;
         }
-        else if (indexToDelete == totalNodes) 
-        {
-            nodeToDelete = deleteAtEnd();
-        } 
-        else if (headNode != null) 
+        // else if (indexToDelete == 1) 
+        // {
+        //     nodeToDelete = this.deleteAtStart();
+        // }
+        // else if (indexToDelete == totalNodes) //last index
+        // {
+        //     nodeToDelete = deleteAtEnd();
+        // } 
+        else if (headNode != null && indexToDelete <= totalNodes) 
         {
             while (indexCounter != indexToDelete) 
             {
@@ -162,7 +167,7 @@ class LinkedList extends List
         } 
         else 
         {
-            System.out.println("List is empty");
+            System.out.println("List is empty or given index is greater than List lenth");
         }
         
         return nodeToDelete;
@@ -367,5 +372,26 @@ public class Main
 
         merged.reverseList();
         merged.print();
+
+        myList.deleteAtStart();
+        myList.deleteAtEnd();
+
+        myList.deleteAtIndex(1);
+        myList.print();
+
+        myList.deleteAtIndex(1);
+        myList.print();
+
+        myList.deleteAtIndex(4);
+        myList.print();
+
+        myList.deleteAtIndex(3);
+        myList.print();
+
+        myList.deleteAtIndex(0);
+        myList.print();
+
+
+
     }
 }
